@@ -70,7 +70,9 @@ def parse_natural_language_input(user_message: str) -> Dict:
             profile['Days_per_Week'] = days
     
     # Extract equipment/location
-    if any(word in message_lower for word in ['home', 'house', 'apartment']):
+    if any(word in message_lower for word in ['bodyweight', 'body weight', 'no equipment', 'equipment free']):
+        profile['Equipment'] = 'Body Weight'
+    elif any(word in message_lower for word in ['home', 'house', 'apartment']):
         profile['Equipment'] = 'Home'
     elif any(word in message_lower for word in ['gym', 'fitness center', 'health club']):
         profile['Equipment'] = 'Gym'
